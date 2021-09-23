@@ -8,7 +8,7 @@ body {
   margin: 10px auto;
 }
 
-.post-img {
+.post_img {
   width: 200px;
   height: 200px;
   box-shadow: 0 0.8px 0.8px rgb(0 0 0 / 2%), 0 1.8px 1.8px rgb(0 0 0 / 3%),
@@ -19,7 +19,7 @@ body {
   backface-visibility: hidden;
 }
 
-.post-img:hover {
+.post_img:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition: all 0.8s;
@@ -34,28 +34,21 @@ body {
   transition: .5s ease;
   opacity: 0;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
   pointer-events: none;
+  width: 200px;
+  color: white;
 }
 
 .post_info:hover .post_details {
   opacity: 1;
 }
 
-.post_details {
-  width: 200px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .post_details p {
-  line-height: 2rem;
+  line-height: 2.5rem;
   font-size: 18px;
 }

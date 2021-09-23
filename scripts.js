@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const div = document.getElementById('instagram_posts');
-  const postInfo = document.getElementById('post_info');
   const url = 'https://us-central1-squid-apis.cloudfunctions.net/test-front-basic';
   
   function fetchData() {
@@ -36,18 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const userName = post.metadados.users_in_photo;
         const squidUserName = post.usuario.username;
         const datePost = new Date(post.criadoEm);
-        const formattedDate = (addZero(datePost.getDate() )) + "/" + (addZero(datePost.getMonth() + 1)) + "/" + datePost.getFullYear()
+        const formattedDate = `${addZero((datePost.getDate()))}/
+          ${(addZero(datePost.getMonth() + 1))}/${datePost.getFullYear()} 
+          ${datePost.getHours()}:${addZero(datePost.getMinutes())}`;
 
-        const img = createNode('img');
         const postDiv = createNode('div');
         const postInfo = createNode('div');
         const postDetails = createNode('div');
+
+        const img = createNode('img');
+
         const profileURL = createNode('p');
         const likes = createNode('p');
         const comments = createNode('p');
         const postDate = createNode('p');
 
-        img.classList.add('post-img');
+        img.classList.add('post_img');
         postDiv.classList.add('col');
         postInfo.classList.add('post_info');
         postDetails.classList.add('post_details');
@@ -57,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
           : profileURL.innerHTML = `@${squidUserName}`}
 
         img.src = `${post.imagens.thumbnail.url}`;
-        likes.innerHTML = `${post.upvotes}`;
-        comments.innerHTML = `${post.comentarios}`;
-        postDate.innerHTML = `${formattedDate}`;
+        likes.innerHTML = `<i class="fas fa-heart"></i> ${post.upvotes}`;
+        comments.innerHTML = `<i class="fas fa-comment"></i> ${post.comentarios}`;
+        postDate.innerHTML = `<i class="fas fa-calendar-alt"></i> ${formattedDate}`;
 
         append(div, postDiv);
         append(postDiv, postInfo);
