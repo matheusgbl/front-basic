@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
+  const div = document.getElementById('instagram_posts');
+  const loader = document.getElementById('loader');
+  const url = 'https://us-central1-squid-apis.cloudfunctions.net/test-front-basic';
+  
   function createNode(element) {
     return document.createElement(element);
   }
@@ -13,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
     else
       return num;
   }
-
-  const div = document.getElementById('instagram_posts');
-  const url = 'https://us-central1-squid-apis.cloudfunctions.net/test-front-basic';
   
   function fetchData() {
     try { 
@@ -30,13 +31,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   async function renderData() {
     const data = await fetchData();
-    console.log(data);
       return data.map(post => {
         const userName = post.metadados.users_in_photo;
         const squidUserName = post.usuario.username;
         const datePost = new Date(post.criadoEm);
-        const formattedDate = `${addZero((datePost.getDate()))}/
-          ${(addZero(datePost.getMonth() + 1))}/${datePost.getFullYear()} 
+        const formattedDate = `${addZero((datePost.getDate()))}/${
+          (addZero(datePost.getMonth() + 1))}/${datePost.getFullYear()} 
           ${datePost.getHours()}:${addZero(datePost.getMinutes())}`;
 
         const postDiv = createNode('div');
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const comments = createNode('p');
         const postDate = createNode('p');
 
+        img.setAttribute('class', 'drop-shadow');
         img.classList.add('post_img');
         postDiv.classList.add('col');
         postInfo.classList.add('post_info');
@@ -77,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function() {
         append(postDetails, likes);
         append(postDetails, comments);
         append(postDetails, postDate);
+        loader.style.display = 'none';
       });
   }
   renderData();
-
 });

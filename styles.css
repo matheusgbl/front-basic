@@ -5,16 +5,12 @@ body {
 .logo {
   width: 400px;
   display: flex;
-  margin: 10px auto;
+  margin: 40px auto;
 }
 
 .post_img {
   width: 200px;
   height: 200px;
-  box-shadow: 0 0.8px 0.8px rgb(0 0 0 / 2%), 0 1.8px 1.8px rgb(0 0 0 / 3%),
-    0 4.2px 4.2px rgb(0 0 0 / 4%), 0 8.4px 8.4px rgb(0 0 0 / 5%),
-    0 12.4px 12.4px rgb(0 0 0 / 6%), 0 32.8px 32.8px rgb(0 0 0 / 7%),
-    0 71px 71px rgb(0 0 0 / 9%);
   transition: .5s ease;
   backface-visibility: hidden;
 }
