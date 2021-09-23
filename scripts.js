@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const postInfo = createNode('div');
         const postDetails = createNode('div');
 
+        const postLink = createNode('a');
+
         const img = createNode('img');
 
         const profileURL = createNode('p');
@@ -54,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
         postDiv.classList.add('col');
         postInfo.classList.add('post_info');
         postDetails.classList.add('post_details');
+        postLink.setAttribute('href', `${post.link}`);
+        postLink.setAttribute('target', '_blank');
         
         {userName.length >= 1 
           ? profileURL.innerHTML = `@${userName[0].user.username}`
@@ -66,8 +70,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         append(div, postDiv);
         append(postDiv, postInfo);
-        append(postInfo, img);
-        append(postInfo, postDetails);
+        append(postInfo, postLink);
+        append(postLink, img);
+        append(postLink, postDetails);
         append(postDetails, profileURL);
         append(postDetails, likes);
         append(postDetails, comments);
