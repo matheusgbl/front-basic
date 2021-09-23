@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   async function renderData() {
     const data = await fetchData();
-      return data.map(post => {
+      return data.map((post, index) => {
         const userName = post.metadados.users_in_photo;
         const squidUserName = post.usuario.username;
         const datePost = new Date(post.criadoEm);
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         img.setAttribute('class', 'drop-shadow');
         img.classList.add('post_img');
+        postDiv.setAttribute('style', `--animation-order: ${index};`);
         postDiv.classList.add('col');
         postInfo.classList.add('post_info');
         postDetails.classList.add('post_details');

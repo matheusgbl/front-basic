@@ -1,11 +1,43 @@
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideup {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 body {
   background: #fff;
+}
+/* https://css-tricks.com/different-approaches-for-creating-a-staggered-animation/ */
+
+.col {
+  animation: slideup 1.5s;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
 }
 
 .logo {
   width: 400px;
   display: flex;
   margin: 40px auto;
+  animation: slidein;
+  animation-duration: 1s;
 }
 
 .post_img {
@@ -13,9 +45,10 @@ body {
   height: 200px;
   transition: .5s ease;
   backface-visibility: hidden;
+  border-radius: 5px;
 }
 
-.post_img:hover {
+.post_img:hover{
   cursor: pointer;
   transform: scale(1.1);
   transition: all 0.8s;
